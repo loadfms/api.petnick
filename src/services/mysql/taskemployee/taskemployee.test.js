@@ -26,7 +26,7 @@ test('Atualizacao de servico funcionario', async () => {
     await create()
 
     const result = await taskEmployeeModule.update(1, 1, 1)
-    expect(result.taskemployee.id).toBeGreaterThan(1)
+    expect(result.taskemployee.id).toBe(2)
 })
 
 test('Exclusao de servico funcionario', async () => {

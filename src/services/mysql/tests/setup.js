@@ -2,14 +2,14 @@ require('dotenv').config()
 const mysqlServer = require('mysql')
 
 const connection = mysqlServer.createConnection({
-    hots:process.env.MYSQL_HOST,
-    user:process.env.MYSQL_USER,
-    password:process.env.MYSQL_PASSWORD,
-    database:process.env.MYSQL_DATABASE_TEST
+    hots: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE_TEST
 })
 
-const errorHandler = (error, msg, rejectFunction) =>{
-    rejectFunction({error: msg})
+const errorHandler = (error, msg, rejectFunction) => {
+    rejectFunction({ error: msg })
 }
 
-module.exports = {connection, errorHandler}
+module.exports = { connection, errorHandler }
