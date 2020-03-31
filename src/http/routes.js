@@ -4,6 +4,7 @@ const registerAuthRoutes = require('./auth/auth')
 const registerEmployeeRoutes = require('./employee/employee')
 const registerUserRoutes = require('./user/user')
 const registerTaskEmloyeeRoutes = require('./taskemployee/taskemployee')
+const registerCustomerRoutes = require('./customer/customer')
 
 const routes = (server) => {
     server.get('/', (req, res, next) => {
@@ -15,6 +16,7 @@ const routes = (server) => {
     registerEmployeeRoutes({server, db})
     registerUserRoutes({server, db})
     registerTaskEmloyeeRoutes({server, db})
+    registerCustomerRoutes({server, db})
 }
 
 module.exports = routes
