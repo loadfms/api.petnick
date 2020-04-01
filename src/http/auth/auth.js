@@ -9,7 +9,7 @@ const registerAuthRoutes = (deps) => {
             next()
         }
         catch (err) {
-            res.send(err)
+            res.send(403, err)
             next()
         }
 

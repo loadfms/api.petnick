@@ -15,11 +15,11 @@ const customers = deps => {
                 })
             })
         },
-        save: (name, breed, owner, address, complement, phone) => {
+        save: (name, breed, owner, address, number, complement, phone) => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('INSERT INTO tb_customer (name, breed, owner, address, complement, phone) VALUES (?, ?, ?, ?, ?, ?)', [name, breed, owner, address, complement, phone], (error, result) => {
+                connection.query('INSERT INTO tb_customer (name, breed, owner, address, number, complement, phone) VALUES (?, ?, ?, ?, ?, ?)', [name, breed, owner, address, number, complement, phone], (error, result) => {
                     if (error) {
                         errorHandler(error, `Falha ao salvar o cliente ${name}`, reject)
                         return false
@@ -29,11 +29,11 @@ const customers = deps => {
                 })
             })
         },
-        update: (id, name, breed, owner, address, complement, phone) => {
+        update: (id, name, breed, owner, address, number, complement, phone) => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_customer set name = ?, breed = ?, owner = ?, address = ?, complement = ?, phone = ? WHERE id = ?', [name, breed, owner, address, complement, phone, id], (error) => {
+                connection.query('UPDATE tb_customer set name = ?, breed = ?, owner = ?, address = ?, complement = ?, phone = ? WHERE id = ?', [name, breed, owner, address, number, complement, phone, id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao atualizar o cliente ${name}`, reject)
                         return false

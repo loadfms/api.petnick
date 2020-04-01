@@ -1,4 +1,4 @@
 require('dotenv').config()
 const server = require('./server/index')
 
-server.listen('3000')
+server.listen('5000')
