@@ -1,5 +1,5 @@
 const pgServer = require('pg')
-const connection = new pgServer.Client({
+const connection = new pgServer.Pool({
     connectionString:  process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : process.env.PG_CONNECTION,
 })
 
