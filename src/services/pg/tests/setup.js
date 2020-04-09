@@ -1,6 +1,6 @@
 const pgServer = require('pg')
 const connection = new pgServer.Client({
-    connectionString: 'postgres://localhost/petnick'
+    connectionString: process.env.PG_CONNECTION
 })
 
 connection.connect()

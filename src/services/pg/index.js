@@ -1,7 +1,7 @@
 const pgServer = require('pg')
 const connection = new pgServer.Client({
-    ssl:'required',
-    connectionString: 'postgres://vcukavnogdorhu:32eda2da116ef9336b03cf2f0973d3c1737e0ba414af82fd660846b889db0b42@ec2-34-233-186-251.compute-1.amazonaws.com:5432/ddc61kp1foenkm'
+    ssl:process.env.NODE_ENV === 'production' ? 'required' : '',
+    connectionString:  process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : process.env.PG_CONNECTION,
 })
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
