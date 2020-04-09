@@ -10,6 +10,8 @@ const errorHandler = (error, msg, rejectFunction) =>{
     rejectFunction({error: msg})
 }
 
+console.log('connected on ' + process.env.DATABASE_URL)
+
 const authModule = require('./auth/auth')({ connection, errorHandler })
 const tasksModule = require('./task/task')({ connection, errorHandler })
 const usersModule = require('./user/user')({ connection, errorHandler })
