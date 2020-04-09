@@ -1,20 +1,4 @@
-
-const restify = require('restify')
-const server = restify.createServer()
-
-server.get('/health', async (req, res, next) => {
-    try {
-        
-        res.send({status: 'ok'})
-        next()
-    }
-    catch (err) {
-        res.send(err)
-        next()
-    }
-
-})
+require('dotenv').config()
+const server = require('./server/index')
 
 server.listen(process.env.PORT || 5000)
-
-console.log('started on port 5000')
