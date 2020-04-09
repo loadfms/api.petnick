@@ -1,6 +1,5 @@
 const pgServer = require('pg')
 const connection = new pgServer.Client({
-    ssl:process.env.NODE_ENV === 'production' ? 'required' : '',
     connectionString:  process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : process.env.PG_CONNECTION,
 })
 
