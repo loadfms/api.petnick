@@ -1,4 +1,4 @@
-
+ 
 const registerHealthRoutes = require('./health/health')
 
 const routes = (server) => {
