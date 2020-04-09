@@ -1,19 +1,21 @@
+const toViewModel = require('./viewmodel')
 const registerTaskRoutes = (deps) => {
 
-    const {server, db} = deps
+    const { server, db } = deps
 
     server.get('/task', async (req, res, next) => {
         try {
-            res.send(await db.tasks().all())
+            const data = await db.tasks().all()
+            res.send(toViewModel(data))
             next()
         }
         catch (err) {
             res.send(err)
             next()
         }
-    
+
     })
-    
+
     server.post('/task', async (req, res, next) => {
         const { name } = req.params
         try {
@@ -24,7 +26,7 @@ const registerTaskRoutes = (deps) => {
         }
         next()
     })
-    
+
     server.put('/task', async (req, res, next) => {
         const { name, id } = req.params
         try {
@@ -34,9 +36,9 @@ const registerTaskRoutes = (deps) => {
             res.send(err)
         }
         next()
-    
+
     })
-    
+
     server.del('/task', async (req, res, next) => {
         const { id } = req.params
         try {
