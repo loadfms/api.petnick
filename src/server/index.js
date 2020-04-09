@@ -6,7 +6,7 @@ const jwtMiddleware = require('./../http/jwtMiddleware')
 
 routes(server)
 
-const publicRoutes = ['/auth']
+const publicRoutes = ['/auth', '/health']
 
 server.pre(cors.preflight)
 server.use(cors.actual)
