@@ -19,7 +19,7 @@ const tasks = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('INSERT INTO tb_task (name) VALUES (?)', [name], (error, result) => {
+                connection.query('INSERT INTO tb_task (name) VALUES ($1)', [name], (error, result) => {
                     if (error) {
                         errorHandler(error, `Falha ao salvar o servico ${name}`, reject)
                         return false
@@ -33,7 +33,7 @@ const tasks = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_task set name = ? WHERE id = ?', [name, id], (error) => {
+                connection.query('UPDATE tb_task set name = $1 WHERE id = $2', [name, id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao atualizar o servico ${name}`, reject)
                         return false
@@ -47,7 +47,7 @@ const tasks = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_task set active = 0 WHERE id = ?', [id], (error) => {
+                connection.query('UPDATE tb_task set active = false WHERE id = $1', [id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao excluir o servico`, reject)
                         return false

@@ -20,7 +20,7 @@ const users = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('INSERT INTO tb_user (email, password) VALUES (?, ?)', [email, sha1(password)], (error, result) => {
+                connection.query('INSERT INTO tb_user (email, password) VALUES ($1, $2)', [email, sha1(password)], (error, result) => {
                     if (error) {
                         errorHandler(error, `Falha ao salvar o usuario ${email}`, reject)
                         return false
@@ -34,7 +34,7 @@ const users = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_user set password = ? WHERE id = ?', [sha1(password), id], (error) => {
+                connection.query('UPDATE tb_user set password = $1 WHERE id = $2', [sha1(password), id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao atualizar o usuario id:${id}`, reject)
                         return false
@@ -48,7 +48,7 @@ const users = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_user set active = 0 WHERE id = ?', [id], (error) => {
+                connection.query('UPDATE tb_user set active = false WHERE id = $1', [id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao excluir o usuario`, reject)
                         return false

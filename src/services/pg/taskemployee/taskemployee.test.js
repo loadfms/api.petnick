@@ -44,7 +44,7 @@ test('Listagem de servico funcionario', async () => {
     await create()
 
     const result = await taskEmployeeModule.all()
-    expect(result.taskemployee.length).toBe(1)
+    expect(result.taskemployee.rowCount).toBe(1)
 })
 
 afterAll(async done => {

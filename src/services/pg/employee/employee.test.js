@@ -29,7 +29,7 @@ test('Listagem de funcionario', async () => {
     await create()
     await create()
     const result = await employeeModule.all()
-    expect(result.employees.length).toBe(2)
+    expect(result.employees.rowCount).toBe(2)
 })
 
 afterAll(async done => {

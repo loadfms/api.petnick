@@ -29,7 +29,7 @@ test('Listagem de usuario', async () => {
     await create()
     await create()
     const result = await userModule.all()
-    expect(result.users.length).toBe(2)
+    expect(result.users.rowCount).toBe(2)
 })
 
 afterAll(async done => {

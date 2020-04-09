@@ -30,7 +30,7 @@ test('Listagem de cliente', async () => {
     await create()
     const result = await customerModule.all()
     
-    expect(result.customers.length).toBe(2)
+    expect(result.customers.rowCount).toBe(2)
 })
 
 afterAll(async done => {

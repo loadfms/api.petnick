@@ -29,7 +29,7 @@ test('Listagem de servico', async () => {
     await create()
     await create()
     const result = await taskModule.all()
-    expect(result.tasks.length).toBe(2)
+    expect(result.tasks.rowCount).toBe(2)
 })
 
 afterAll(async done => {

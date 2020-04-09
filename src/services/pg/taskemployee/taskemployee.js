@@ -19,7 +19,7 @@ const taskemployee = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('INSERT INTO tb_task_employee (task_id, employee_id) VALUES (?, ?)', [taskID, employeeID], (error, result) => {
+                connection.query('INSERT INTO tb_task_employee (task_id, employee_id) VALUES ($1, $2)', [taskID, employeeID], (error, result) => {
                     if (error) {
                         errorHandler(error, `Falha ao salvar o servico funcionario servico: ${taskID} funcionario: ${employeeID}`, reject)
                         return false
@@ -33,14 +33,14 @@ const taskemployee = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_task_employee set active = 0 WHERE id = ?', [id], (error) => {
+                connection.query('UPDATE tb_task_employee set active = false WHERE id = $1', [id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao excluir o servico funcionario`, reject)
                         return false
                     }
                 })
 
-                connection.query('INSERT INTO tb_task_employee (task_id, employee_id) VALUES (?, ?)', [taskID, employeeID], (error, result) => {
+                connection.query('INSERT INTO tb_task_employee (task_id, employee_id) VALUES ($1, $2)', [taskID, employeeID], (error, result) => {
                     if (error) {
                         errorHandler(error, `Falha ao salvar o servico funcionario servico: ${taskID} funcionario: ${employeeID}`, reject)
                         return false
@@ -54,7 +54,7 @@ const taskemployee = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_task_employee set active = 0 WHERE id = ?', [id], (error) => {
+                connection.query('UPDATE tb_task_employee set active = false WHERE id = $1', [id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao excluir o servico funcionario`, reject)
                         return false

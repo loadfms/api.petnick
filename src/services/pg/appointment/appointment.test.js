@@ -59,7 +59,7 @@ test('Listagem de compromisso', async () => {
     await create()
 
     const result = await appointmentModule.all()
-    expect(result.appointments.length).toBe(2)
+    expect(result.appointments.rowCount).toBe(2)
 })
 
 afterAll(async done => {

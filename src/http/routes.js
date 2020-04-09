@@ -1,4 +1,4 @@
-const db = require('../services/mysql')
+const db = require('../services/pg')
 const registerTaskRoutes = require('./task/task')
 const registerAuthRoutes = require('./auth/auth')
 const registerEmployeeRoutes = require('./employee/employee')
