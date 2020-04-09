@@ -4,7 +4,6 @@ const connection = new pgServer.Client({
     connectionString:  process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : process.env.PG_CONNECTION,
 })
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 connection.connect()
 
 const errorHandler = (error, msg, rejectFunction) =>{
