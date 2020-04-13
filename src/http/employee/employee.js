@@ -5,7 +5,8 @@ const registerEmployeeRoutes = (deps) => {
 
     server.get('/employee', async (req, res, next) => {
         try {
-            res.send(await db.employees().all())
+            const data = await db.employees().all()
+            res.send(toViewModel(data))
             next()
         }
         catch (err) {
