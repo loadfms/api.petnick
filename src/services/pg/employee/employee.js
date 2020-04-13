@@ -15,6 +15,20 @@ const employees = deps => {
                 })
             })
         },
+        one: (id) => {
+            return new Promise((resolve, reject) => {
+                const { connection, errorHandler } = deps
+
+                connection.query('SELECT * FROM tb_employee WHERE active and id = $1', [id], (error, result) => {
+                    if (error) {
+                        errorHandler(error, 'Falha ao listar os funcionario', reject)
+                        return false
+                    }
+
+                    resolve({ employees: result })
+                })
+            })
+        },
         save: (name) => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps

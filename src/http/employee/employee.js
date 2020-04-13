@@ -1,3 +1,4 @@
+const toViewModel = require('./viewmodel')
 const registerEmployeeRoutes = (deps) => {
 
     const {server, db} = deps
@@ -5,6 +6,20 @@ const registerEmployeeRoutes = (deps) => {
     server.get('/employee', async (req, res, next) => {
         try {
             res.send(await db.employees().all())
+            next()
+        }
+        catch (err) {
+            res.send(err)
+            next()
+        }
+    
+    })
+
+    server.get('/employee/:id', async (req, res, next) => {
+        try {
+            const { id } = req.params
+            const data = await db.employees().one(id)
+            res.send(toViewModel(data))
             next()
         }
         catch (err) {
