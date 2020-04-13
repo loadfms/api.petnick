@@ -13,7 +13,7 @@ test('Login de usuario', async () => {
     await create()
     const result = await authModule.authenticate('teste@email.com', '123456')
 
-    expect(result.token.rowCount).toBeGreaterThan(0)
+    expect(result.token.length).toBeGreaterThan(0)
 })
 
 test('Erro de login de usuario', async () => {

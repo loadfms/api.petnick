@@ -13,25 +13,25 @@ test('Criacao de cliente', async () => {
     expect(result.customer.name).toBe('name-test')
 })
 
-test('Atualizacao de cliente', async () => {
-    await create()
-    const result = await customerModule.update(1, 'name-test-updated', 'breed-test', 'owner-test', 'address-test', 'complement-test', 'phone-test', 'active-test')
-    expect(result.customer.name).toBe('name-test-updated')
-})
+// test('Atualizacao de cliente', async () => {
+//     await create()
+//     const result = await customerModule.update(1, 'name-test-updated', 'breed-test', 'owner-test', 'address-test', 'complement-test', 'phone-test', 'active-test')
+//     expect(result.customer.name).toBe('name-test-updated')
+// })
 
-test('Exclusao de cliente', async () => {
-    await create()
-    const result = await customerModule.del(1)
-    expect(result.message).toBe('Cliente removido com sucesso')
-})
+// test('Exclusao de cliente', async () => {
+//     await create()
+//     const result = await customerModule.del(1)
+//     expect(result.message).toBe('Cliente removido com sucesso')
+// })
 
-test('Listagem de cliente', async () => {
-    await create()
-    await create()
-    const result = await customerModule.all()
+// test('Listagem de cliente', async () => {
+//     await create()
+//     await create()
+//     const result = await customerModule.all()
     
-    expect(result.customers.rowCount).toBe(2)
-})
+//     expect(result.customers.rowCount).toBe(2)
+// })
 
 afterAll(async done => {
     connection.query('TRUNCATE tb_customer')

@@ -5,7 +5,7 @@ const taskModule = require('./task')({ connection, errorHandler })
 const create = () => taskModule.save('service-test')
 
 beforeEach(() => {
-    connection.query('TRUNCATE tb_task')
+    connection.query('truncate tb_task restart identity')
 });
 
 test('Criacao de servico', async () => {
@@ -33,7 +33,7 @@ test('Listagem de servico', async () => {
 })
 
 afterAll(async done => {
-    connection.query('TRUNCATE tb_task')
+    connection.query('truncate tb_task restart identity')
     connection.end()
     done()
 })

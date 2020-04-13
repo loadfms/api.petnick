@@ -20,13 +20,13 @@ const users = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('INSERT INTO tb_user (email, password) VALUES ($1, $2)', [email, sha1(password)], (error, result) => {
+                connection.query('INSERT INTO tb_user (email, password) VALUES ($1, $2) RETURNING id', [email, sha1(password)], (error, result) => {
                     if (error) {
                         errorHandler(error, `Falha ao salvar o usuario ${email}`, reject)
                         return false
                     }
 
-                    resolve({ user: { email: email, id: result.insertId } })
+                    resolve({ user: { email: email, id: result.rows[0].id } })
                 })
             })
         },

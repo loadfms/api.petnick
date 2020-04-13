@@ -7,7 +7,7 @@ connection.connect()
 
 const errorHandler = (error, msg, rejectFunction) =>{
     console.log(error)
-    rejectFunction({error: msg})
+    rejectFunction({error: error, message: msg})
 }
 
 const authModule = require('./auth/auth')({ connection, errorHandler })
