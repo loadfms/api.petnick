@@ -16,6 +16,20 @@ const registerTaskRoutes = (deps) => {
 
     })
 
+    server.get('/task/:id', async (req, res, next) => {
+        try {
+            const { id } = req.params
+            const data = await db.tasks().one(id)
+            res.send(toViewModel(data))
+            next()
+        }
+        catch (err) {
+            res.send(err)
+            next()
+        }
+
+    })
+
     server.post('/task', async (req, res, next) => {
         const { name } = req.params
         try {
