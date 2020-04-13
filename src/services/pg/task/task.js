@@ -5,7 +5,7 @@ const tasks = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('SELECT * FROM tb_task WHERE active', (error, result) => {
+                connection.query('SELECT * FROM tb_task WHERE active ORDER BY 1', (error, result) => {
                     if (error) {
                         errorHandler(error, 'Falha ao listar os servicos', reject)
                         return false
