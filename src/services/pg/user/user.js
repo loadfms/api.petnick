@@ -16,6 +16,20 @@ const users = deps => {
                 })
             })
         },
+        one: (id) => {
+            return new Promise((resolve, reject) => {
+                const { connection, errorHandler } = deps
+
+                connection.query('SELECT id, email FROM tb_user WHERE active and id = $1', [id], (error, result) => {
+                    if (error) {
+                        errorHandler(error, 'Falha ao listar os usuarios', reject)
+                        return false
+                    }
+
+                    resolve({ users: result })
+                })
+            })
+        },
         save: (email, password) => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
