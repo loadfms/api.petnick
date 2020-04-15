@@ -1,10 +1,13 @@
+const toViewModel = require('./viewmodel')
 const registerTaskEmloyeeRoutes = (deps) => {
 
     const {server, db} = deps
 
-    server.get('/task-employee', async (req, res, next) => {
+    server.get('/task-employee/:employeeId', async (req, res, next) => {
+        const { employeeId } = req.params
         try {
-            res.send(await db.taskemployees().all())
+            const data = await db.taskemployees().all(employeeId)
+            res.send(toViewModel(data))
             next()
         }
         catch (err) {
@@ -15,32 +18,23 @@ const registerTaskEmloyeeRoutes = (deps) => {
     })
     
     server.post('/task-employee', async (req, res, next) => {
-        const { taskID, employeeID } = req.params
+        const items = req.params
         try {
-            res.send(await db.taskemployees().save(taskID, employeeID))
+            items.forEach(element => {
+                db.taskemployees().save(element.taskId, element.employeeId)
+            });
+            res.send('ok')
         }
         catch (err) {
             res.send(err)
         }
         next()
-    })
-    
-    server.put('/task-employee', async (req, res, next) => {
-        const { id, taskID, employeeID } = req.params
-        try {
-            res.send(await db.taskemployees().update(id, taskID, employeeID))
-        }
-        catch (err) {
-            res.send(err)
-        }
-        next()
-    
     })
     
     server.del('/task-employee', async (req, res, next) => {
-        const { id } = req.params
+        const { employeeId } = req.params
         try {
-            res.send(await db.taskemployees().del(id))
+            res.send(await db.taskemployees().del(employeeId))
         }
         catch (err) {
             res.send(err)
