@@ -17,6 +17,7 @@ const employeeModule = require('./employee/employee')({ connection, errorHandler
 const taskEmployeeModule = require('./taskemployee/taskemployee')({ connection, errorHandler })
 const customerModule = require('./customer/customer')({ connection, errorHandler })
 const appointmentModule = require('./appointment/appointment')({ connection, errorHandler })
+const petModule = require('./pet/pet')({ connection, errorHandler })
 
 module.exports = {
     tasks: () => tasksModule,
@@ -25,5 +26,6 @@ module.exports = {
     employees: () => employeeModule,
     taskemployees: () => taskEmployeeModule,
     customers: () => customerModule,
-    appointments: () => appointmentModule
+    appointments: () => appointmentModule,
+    pets: () => petModule
 }

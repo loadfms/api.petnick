@@ -8,8 +8,6 @@ try {
     routes(server)
 
     const publicRoutes = ['/auth', '/health']
-    console.log("teste")
-
 
     server.pre(cors.preflight)
     server.use(cors.actual)

@@ -8,6 +8,7 @@ const registerTaskEmloyeeRoutes = require('./taskemployee/taskemployee')
 const registerCustomerRoutes = require('./customer/customer')
 const registerAppointmentRoutes = require('./appointment/appointment')
 const registerHealthRoutes = require('./health/health')
+const registerPetRoutes = require('./pet/pet')
 
 const routes = (server) => {
     server.get('/', (req, res, next) => {
@@ -22,6 +23,7 @@ const routes = (server) => {
     registerTaskEmloyeeRoutes({server, db})
     registerCustomerRoutes({server, db})
     registerAppointmentRoutes({server, db})
+    registerPetRoutes({server, db})
 }
 
 module.exports = routes

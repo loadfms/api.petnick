@@ -19,7 +19,7 @@ const customers = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('INSERT INTO tb_customer (name, breed, owner, address, number, complement, phone) VALUES ($1, $2, $3, $4, $5, $6)', [name, breed, owner, address, number, complement, phone], (error, result) => {
+                connection.query('INSERT INTO tb_customer (name, address, number, complement, phone) VALUES ($1, $2, $3, $4, $5)', [name, address, number, complement, phone], (error, result) => {
                     if (error) {
                         errorHandler(error, `Falha ao salvar o cliente ${name}`, reject)
                         return false
@@ -33,7 +33,7 @@ const customers = deps => {
             return new Promise((resolve, reject) => {
                 const { connection, errorHandler } = deps
 
-                connection.query('UPDATE tb_customer set name = $1, breed = $2, owner = $3, address = $4, complement = $5, phone = $6 WHERE id = $7', [name, breed, owner, address, number, complement, phone, id], (error) => {
+                connection.query('UPDATE tb_customer set name = $1, address = $2, complement = $3, phone = $4 WHERE id = $5', [name, address, number, complement, phone, id], (error) => {
                     if (error) {
                         errorHandler(error, `Falha ao atualizar o cliente ${name}`, reject)
                         return false
